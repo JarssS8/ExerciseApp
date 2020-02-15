@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.jars.exerciseapp.activities.fragments.HomeFragment"
+        android:label="HOME"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_day"
+            app:destination="@id/nav_day" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_day"
+        android:name="com.jars.exerciseapp.activities.fragments.days.MondayFragment"
+        android:label="TODAY ROUTINE"
+        tools:layout="@layout/fragment_monday">
+        <action
+            android:id="@+id/action_nav_day_to_nav_routine"
+            app:destination="@id/nav_routine" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_routine"
+        android:name="com.jars.exerciseapp.activities.fragments.days.RoutineFragment"
+        android:label="TODAY ROUTINE"
+        tools:layout="@layout/fragment_routine"/>
+
+</navigation>
