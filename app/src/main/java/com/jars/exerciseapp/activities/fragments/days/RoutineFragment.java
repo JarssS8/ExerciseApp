@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class RoutineFragment extends Fragment implements View.OnClickListener {
 
     private View root, viewWait;
-    private TextView txtRoundCount, txtCountDownWait;
+    private TextView txtRoundCount, txtCountDownWait, txtCircuitCount;
     private int roundCount = 1, actualPhoto = 0;
     private ImageView imageButtonStart, imageButtonNextPhoto;
     private static ArrayList<Integer> photos, auxPhotos;
@@ -41,6 +41,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
         imageButtonNextPhoto = root.findViewById(R.id.imageButtonExercise);
         viewWait = root.findViewById(R.id.viewWait);
         txtCountDownWait = root.findViewById(R.id.txtCountDownWait);
+        txtCircuitCount = root.findViewById(R.id.txtCircuitCount);
 
         imageButtonNextPhoto.setVisibility(View.INVISIBLE);
 
@@ -57,7 +58,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
         auxPhotos = new ArrayList<>();
         if(roundCount%2==0){
             for(int i=0;i<photos.size();i++){
-                if(photos.get(i)>=photos.size()/2){
+                if(i>=photos.size()/2){
                     auxPhotos.add(photos.get(i));
                 }
             }
@@ -71,7 +72,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
     }
 
     private void startRoundCount() {
-        long totalTimeRound = 7 * 60 * 1000 + 1; //7 minutos
+        long totalTimeRound = 10 * 1000 + 1000; //7 minutos 7 * 60 * 1000 + 1
         CountDownTimer countDownTimer = new CountDownTimer(totalTimeRound, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -93,8 +94,12 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onFinish() {
-                txtRoundCount.setText("yeah");
+                txtRoundCount.setText("start");
                 roundCount++;
+                imageButtonNextPhoto.setVisibility(View.INVISIBLE);
+                txtCircuitCount.setText("Circuito : "+roundCount+"/4");
+                actualPhoto = 0;
+                setImagesToAux();
             }
         }.start();
     }
@@ -105,6 +110,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
             case R.id.imageButtonStart:
                 if (txtRoundCount.getText().toString().equalsIgnoreCase("START")) {
                     imageButtonNextPhoto.setVisibility(View.VISIBLE);
+                    imageButtonNextPhoto.setImageResource(auxPhotos.get(0));
                     startRoundCount();
                 }
                 break;
@@ -124,7 +130,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
         imageButtonNextPhoto.setClickable(false);
         viewWait.setVisibility(View.VISIBLE);
         txtCountDownWait.setVisibility(View.VISIBLE);
-        long totalTimeRound = 30 * 1000 + 1; //30 segundos
+        long totalTimeRound = 3 * 1000 + 1000; //30 segundos
         CountDownTimer countDownTimer = new CountDownTimer(totalTimeRound, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

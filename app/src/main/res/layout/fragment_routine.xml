@@ -37,7 +37,7 @@
         app:layout_constraintVertical_bias="0.93" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtCircuitCount"
         android:layout_width="104dp"
         android:layout_height="23dp"
         android:text="Circuito : 1/4"
