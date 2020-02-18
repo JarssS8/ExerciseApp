@@ -30,6 +30,10 @@ public class SQLiteManager extends SQLiteOpenHelper {
     }
 
     public void insertNewSave(int week,int day) {
+        if (day==3 && week<12) {
+            day=1;
+            week++;
+        }
         ContentValues dataContentValues = toContentValues(week,day);
         if(findLastCircuit()==null) {
             sqLiteDatabase.insert(TABLE_NAME_CIRCUIT, null, dataContentValues);
