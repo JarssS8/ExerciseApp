@@ -77,7 +77,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
     }
 
     private void startRoundCount() {
-        long totalTimeRound = 2 * 1000 + 1000; //7 minutos 7 * 60 * 1000 + 1
+        long totalTimeRound = 7 * 60 * 1000 + 1000; //7 minutos 7 * 60 * 1000 + 1
         countDownTimerCircuit = new CountDownTimer(totalTimeRound, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

@@ -3,4 +3,35 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="week_promp">Choose a Week</string>
+
+    <string-array name="weeks_arrays">
+        <item>Select One Week...</item>
+        <item>PreTraining Week 1</item>
+        <item>PreTraining Week 2</item>
+        <item>PreTraining Week 3</item>
+        <item>PreTraining Week 4</item>
+        <item>Week 1</item>
+        <item>Week 2</item>
+        <item>Week 3</item>
+        <item>Week 4</item>
+        <item>Week 5</item>
+        <item>Week 6</item>
+        <item>Week 7</item>
+        <item>Week 8</item>
+        <item>Week 9</item>
+        <item>Week 10</item>
+        <item>Week 11</item>
+        <item>Week 12</item>
+        <item>Week 13</item>
+        <item>Week 14</item>
+    </string-array>
+
+    <string-array name="days_array">
+        <item>Select One Day...</item>
+        <item>Monday</item>
+        <item>Wednesday</item>
+        <item>Friday</item>
+    </string-array>
 </resources>
