@@ -5,12 +5,16 @@ import android.content.ContentValues;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -19,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.jars.exerciseapp.R;
 import com.jars.exerciseapp.activities.fragments.days.DayPreviousInfoFragment;
 import com.jars.exerciseapp.beans.Circuit;
@@ -42,6 +47,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        setHasOptionsMenu(true);
         spinnerDays = root.findViewById(R.id.spinnerDays);
         spinnerWeeks = root.findViewById(R.id.spinnerWeeks);
         btChargeRoutine = root.findViewById(R.id.btChargeRoutine);
@@ -129,9 +136,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.btChargeRoutine:
-                Circuit circuit = dataSession();
-                Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_day);
-                DayPreviousInfoFragment.setCircuit(circuit);
+                if(spinnerWeeks.getSelectedItemPosition()!=0 && spinnerDays.getSelectedItemPosition()!=0) {
+                    Circuit circuit = dataSession();
+                    Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_day);
+                    DayPreviousInfoFragment.setCircuit(circuit);
+                }else
+                    Toast.makeText(getContext(), "Select one week and one day first", Toast.LENGTH_SHORT).show();
                 break;
 
         }
@@ -145,6 +155,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         circuit.setDayId(spinnerDays.getSelectedItemPosition());
         circuit.setImagesInt(addImages());
         return circuit;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_options, menu);
+    }
+
+    /**
+     * Select items from my menu
+     *
+     * @param item the item that user is interacting with
+     * @return true if the item was selected
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.options:
+                Navigation.findNavController(getView()).navigate(R.id.action_nav_home_to_nav_options);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private ArrayList<Integer> addImages() {
