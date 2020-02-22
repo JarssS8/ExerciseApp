@@ -25,6 +25,8 @@ import java.util.ArrayList;
  */
 public class RoutineFragment extends Fragment implements View.OnClickListener {
 
+    //Todo añadir configuracion para poder cambiar el tiempo de espera
+
     private View root, viewWait;
     private TextView txtRoundCount, txtCountDownWait, txtCircuitCount;
     private int actualCircuit = 1, actualPhoto = 0;
@@ -138,7 +140,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
                     actualPhoto++;
                     if (actualPhoto == auxPhotos.size()) {
                         actualPhoto=0;
-                        waitTime("NORMAL");
+                        //Todo waitTime("NORMAL");
                     }
                     imageButtonNextPhoto.setImageResource(auxPhotos.get(actualPhoto));
                 break;
@@ -151,7 +153,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
                 imageButtonNextPhoto.setClickable(false);
                 viewWait.setVisibility(View.VISIBLE);
                 txtCountDownWait.setVisibility(View.VISIBLE);
-                long totalTimeRound = 6 * 1000 + 1000; //60 segundos
+                long totalTimeRound = 60 * 1000 + 1000; //60 segundos
                 countDownTimerBreak = new CountDownTimer(totalTimeRound, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
