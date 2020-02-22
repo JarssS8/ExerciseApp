@@ -29,6 +29,10 @@
         android:id="@+id/nav_routine"
         android:name="com.jars.exerciseapp.activities.fragments.days.RoutineFragment"
         android:label="TODAY ROUTINE"
-        tools:layout="@layout/fragment_routine"/>
+        tools:layout="@layout/fragment_routine">
+        <action
+            android:id="@+id/action_nav_routine_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 
 </navigation>

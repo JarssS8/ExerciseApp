@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -74,7 +75,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
     }
 
     private void startRoundCount() {
-        long totalTimeRound = 10 * 1000 + 1000; //7 minutos 7 * 60 * 1000 + 1
+        long totalTimeRound = 2 * 1000 + 1000; //7 minutos 7 * 60 * 1000 + 1
         countDownTimerCircuit = new CountDownTimer(totalTimeRound, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -96,7 +97,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onFinish() {
-                if(actualCircuit<=4) {
+                if(actualCircuit<4) {
                     txtRoundCount.setText("BREAK");
                     if (countDownTimerBreak != null)
                         countDownTimerBreak.cancel();
@@ -130,6 +131,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
                         manager.insertNewSave(Integer.parseInt(currentWeekDay.substring(0, 1)), Integer.parseInt(currentWeekDay.substring(1)));
                         manager.close();
                     }
+                    Navigation.findNavController(v).navigate(R.id.action_nav_routine_to_nav_home);
                 }
                 break;
             case R.id.imageButtonExercise:
