@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jars.exerciseapp.R;
+import com.jars.exerciseapp.beans.Circuit;
 import com.jars.exerciseapp.database.SQLiteManager;
 
 import java.util.ArrayList;
@@ -29,9 +30,10 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
 
     private View root, viewWait;
     private TextView txtRoundCount, txtCountDownWait, txtCircuitCount;
-    private int actualCircuit = 1, actualPhoto = 0;
+    private int actualCircuit = 4, actualPhoto = 0;
     private ImageView imageButtonStart, imageButtonNextPhoto;
-    private static ArrayList<Integer> photos, auxPhotos;
+    private ArrayList<Integer> photos, auxPhotos;
+    private static Circuit circuit;
     private CountDownTimer countDownTimerCircuit, countDownTimerBreak;
     private static String currentWeekDay;
 
@@ -47,6 +49,8 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
         viewWait = root.findViewById(R.id.viewWait);
         txtCountDownWait = root.findViewById(R.id.txtCountDownWait);
         txtCircuitCount = root.findViewById(R.id.txtCircuitCount);
+        photos = circuit.getImagesInt();
+        currentWeekDay = circuit.getWeekId()+circuit.getDayId()+"";
 
         imageButtonNextPhoto.setVisibility(View.INVISIBLE);
 
@@ -130,7 +134,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
                 } else if (txtRoundCount.getText().toString().equalsIgnoreCase("FINISH")){
                     if(currentWeekDay!=null) {
                         SQLiteManager manager = new SQLiteManager(getContext());
-                        manager.insertNewSave(Integer.parseInt(currentWeekDay.substring(0, 1)), Integer.parseInt(currentWeekDay.substring(1)));
+                        manager.insertNewSave(circuit.getWeekId(), circuit.getDayId());
                         manager.close();
                     }
                     Navigation.findNavController(v).navigate(R.id.action_nav_routine_to_nav_home);
@@ -225,8 +229,8 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
         RoutineFragment.currentWeekDay = currentWeekDay;
     }
 
-    public static void setPhotos(ArrayList<Integer> photos) {
-        RoutineFragment.photos = photos;
+    public static void setCircuit(Circuit circuit) {
+        RoutineFragment.circuit = circuit;
     }
 
 

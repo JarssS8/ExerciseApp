@@ -1,6 +1,7 @@
 package com.jars.exerciseapp.activities.fragments;
 
 
+import android.content.ContentValues;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -19,9 +20,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jars.exerciseapp.R;
+import com.jars.exerciseapp.activities.fragments.days.DayPreviousInfoFragment;
+import com.jars.exerciseapp.beans.Circuit;
 import com.jars.exerciseapp.database.SQLiteManager;
 import com.jars.exerciseapp.recyclers.RecyclerAdapterWeekly;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -116,15 +120,317 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btSynchronize:
                 SQLiteManager manager = new SQLiteManager(getContext());
-                String lastRoutine = manager.findLastCircuit();
-                if(lastRoutine==null)
+                ContentValues lastRoutine = manager.findLastCircuit();
+                if (lastRoutine == null)
                     Toast.makeText(getContext(), "You don't finish any session yet", Toast.LENGTH_SHORT).show();
+                else{
+                    spinnerWeeks.setSelection((Integer)lastRoutine.get("week"));
+                    spinnerDays.setSelection((Integer)lastRoutine.get("day"));
+                }
                 break;
             case R.id.btChargeRoutine:
+                Circuit circuit = dataSession();
                 Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_day);
+                DayPreviousInfoFragment.setCircuit(circuit);
                 break;
 
         }
 
+    }
+
+    private Circuit dataSession() {
+        Circuit circuit = new Circuit();
+        circuit.setName(spinnerWeeks.getSelectedItem().toString() + " : " + spinnerDays.getSelectedItem().toString());
+        circuit.setWeekId(spinnerWeeks.getSelectedItemPosition());
+        circuit.setDayId(spinnerDays.getSelectedItemPosition());
+        circuit.setImagesInt(addImages());
+        return circuit;
+    }
+
+    private ArrayList<Integer> addImages() {
+        ArrayList<Integer> imagesIds = new ArrayList<>();
+        switch (spinnerWeeks.getSelectedItemPosition()) {
+            case 1:
+            case 2:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        imagesIds.add(R.drawable.pre_week_1_monday_1);
+                        imagesIds.add(R.drawable.pre_week_1_monday_2);
+                        imagesIds.add(R.drawable.pre_week_1_monday_3);
+                        imagesIds.add(R.drawable.pre_week_1_monday_4);
+                        imagesIds.add(R.drawable.pre_week_1_monday_5);
+                        imagesIds.add(R.drawable.pre_week_1_monday_6);
+                        imagesIds.add(R.drawable.pre_week_1_monday_7);
+                        imagesIds.add(R.drawable.pre_week_1_monday_8);
+                        break;
+                    case 2:
+                        imagesIds.add(R.drawable.pre_week_1_wednesday_1);
+                        imagesIds.add(R.drawable.pre_week_1_wednesday_2);
+                        imagesIds.add(R.drawable.pre_week_1_wednesday_3);
+                        imagesIds.add(R.drawable.pre_week_1_wednesday_4);
+                        imagesIds.add(R.drawable.pre_week_1_wednesday_5);
+                        imagesIds.add(R.drawable.pre_week_1_wednesday_6);
+                        imagesIds.add(R.drawable.pre_week_1_wednesday_7);
+                        imagesIds.add(R.drawable.pre_week_1_wednesday_8);
+                        break;
+                    case 3:
+                        imagesIds.add(R.drawable.pre_week_1_friday_1);
+                        imagesIds.add(R.drawable.pre_week_1_friday_2);
+                        imagesIds.add(R.drawable.pre_week_1_friday_3);
+                        imagesIds.add(R.drawable.pre_week_1_friday_4);
+                        imagesIds.add(R.drawable.pre_week_1_friday_5);
+                        imagesIds.add(R.drawable.pre_week_1_friday_6);
+                        imagesIds.add(R.drawable.pre_week_1_friday_7);
+                        imagesIds.add(R.drawable.pre_week_1_friday_8);
+                        break;
+                }
+                break;
+            case 3:
+            case 4:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        imagesIds.add(R.drawable.pre_week_3_monday_1);
+                        imagesIds.add(R.drawable.pre_week_3_monday_2);
+                        imagesIds.add(R.drawable.pre_week_3_monday_3);
+                        imagesIds.add(R.drawable.pre_week_3_monday_4);
+                        imagesIds.add(R.drawable.pre_week_3_monday_5);
+                        imagesIds.add(R.drawable.pre_week_3_monday_6);
+                        imagesIds.add(R.drawable.pre_week_3_monday_7);
+                        imagesIds.add(R.drawable.pre_week_3_monday_8);
+                        break;
+                    case 2:
+                        imagesIds.add(R.drawable.pre_week_3_wednesday_1);
+                        imagesIds.add(R.drawable.pre_week_3_wednesday_2);
+                        imagesIds.add(R.drawable.pre_week_3_wednesday_3);
+                        imagesIds.add(R.drawable.pre_week_3_wednesday_4);
+                        imagesIds.add(R.drawable.pre_week_3_wednesday_5);
+                        imagesIds.add(R.drawable.pre_week_3_wednesday_6);
+                        imagesIds.add(R.drawable.pre_week_3_wednesday_7);
+                        imagesIds.add(R.drawable.pre_week_3_wednesday_8);
+                        break;
+                    case 3:
+                        imagesIds.add(R.drawable.pre_week_3_friday_1);
+                        imagesIds.add(R.drawable.pre_week_3_friday_2);
+                        imagesIds.add(R.drawable.pre_week_3_friday_3);
+                        imagesIds.add(R.drawable.pre_week_3_friday_4);
+                        imagesIds.add(R.drawable.pre_week_3_friday_5);
+                        imagesIds.add(R.drawable.pre_week_3_friday_6);
+                        imagesIds.add(R.drawable.pre_week_3_friday_7);
+                        imagesIds.add(R.drawable.pre_week_3_friday_8);
+                        break;
+                }
+                break;
+            case 5:
+            case 7:
+                    switch (spinnerDays.getSelectedItemPosition()) {
+                        case 1:
+                            imagesIds.add(R.drawable.week_1_monday_1);
+                            imagesIds.add(R.drawable.week_1_monday_2);
+                            imagesIds.add(R.drawable.week_1_monday_3);
+                            imagesIds.add(R.drawable.week_1_monday_4);
+                            imagesIds.add(R.drawable.week_1_monday_5);
+                            imagesIds.add(R.drawable.week_1_monday_6);
+                            imagesIds.add(R.drawable.week_1_monday_7);
+                            imagesIds.add(R.drawable.week_1_monday_8);
+                            break;
+                        case 2:
+                            imagesIds.add(R.drawable.week_1_wedneday_1);
+                            imagesIds.add(R.drawable.week_1_wedneday_2);
+                            imagesIds.add(R.drawable.week_1_wedneday_3);
+                            imagesIds.add(R.drawable.week_1_wedneday_4);
+                            imagesIds.add(R.drawable.week_1_wedneday_5);
+                            imagesIds.add(R.drawable.week_1_wedneday_6);
+                            imagesIds.add(R.drawable.week_1_wedneday_7);
+                            imagesIds.add(R.drawable.week_1_wedneday_8);
+                            break;
+                        case 3:
+                            imagesIds.add(R.drawable.week_1_friday_1);
+                            imagesIds.add(R.drawable.week_1_friday_2);
+                            imagesIds.add(R.drawable.week_1_friday_3);
+                            imagesIds.add(R.drawable.week_1_friday_4);
+                            imagesIds.add(R.drawable.week_1_friday_5);
+                            imagesIds.add(R.drawable.week_1_friday_6);
+                            imagesIds.add(R.drawable.week_1_friday_7);
+                            imagesIds.add(R.drawable.week_1_friday_8);
+                            break;
+                }
+                break;
+            case 6:
+            case 8:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        imagesIds.add(R.drawable.week_2_monday_1);
+                        imagesIds.add(R.drawable.week_2_monday_2);
+                        imagesIds.add(R.drawable.week_2_monday_3);
+                        imagesIds.add(R.drawable.week_2_monday_4);
+                        imagesIds.add(R.drawable.week_2_monday_5);
+                        imagesIds.add(R.drawable.week_2_monday_6);
+                        imagesIds.add(R.drawable.week_2_monday_7);
+                        imagesIds.add(R.drawable.week_2_monday_8);
+                        break;
+                    case 2:
+                        imagesIds.add(R.drawable.week_2_wednesday_1);
+                        imagesIds.add(R.drawable.week_2_wednesday_2);
+                        imagesIds.add(R.drawable.week_2_wednesday_3);
+                        imagesIds.add(R.drawable.week_2_wednesday_4);
+                        imagesIds.add(R.drawable.week_2_wednesday_5);
+                        imagesIds.add(R.drawable.week_2_wednesday_6);
+                        imagesIds.add(R.drawable.week_2_wednesday_7);
+                        imagesIds.add(R.drawable.week_2_wednesday_8);
+                        break;
+                    case 3:
+                        imagesIds.add(R.drawable.week_2_friday_1);
+                        imagesIds.add(R.drawable.week_2_friday_2);
+                        imagesIds.add(R.drawable.week_2_friday_3);
+                        imagesIds.add(R.drawable.week_2_friday_4);
+                        imagesIds.add(R.drawable.week_2_friday_5);
+                        imagesIds.add(R.drawable.week_2_friday_6);
+                        imagesIds.add(R.drawable.week_2_friday_7);
+                        imagesIds.add(R.drawable.week_2_friday_8);
+                        break;
+                }
+                break;
+            case 9:
+            case 11:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        imagesIds.add(R.drawable.week_5_monday_1);
+                        imagesIds.add(R.drawable.week_5_monday_2);
+                        imagesIds.add(R.drawable.week_5_monday_3);
+                        imagesIds.add(R.drawable.week_5_monday_4);
+                        imagesIds.add(R.drawable.week_5_monday_5);
+                        imagesIds.add(R.drawable.week_5_monday_6);
+                        imagesIds.add(R.drawable.week_5_monday_7);
+                        imagesIds.add(R.drawable.week_5_monday_8);
+                        break;
+                    case 2:
+                        imagesIds.add(R.drawable.week_5_wednesday_1);
+                        imagesIds.add(R.drawable.week_5_wednesday_2);
+                        imagesIds.add(R.drawable.week_5_wednesday_3);
+                        imagesIds.add(R.drawable.week_5_wednesday_4);
+                        imagesIds.add(R.drawable.week_5_wednesday_5);
+                        imagesIds.add(R.drawable.week_5_wednesday_6);
+                        imagesIds.add(R.drawable.week_5_wednesday_7);
+                        imagesIds.add(R.drawable.week_5_wednesday_8);
+                        break;
+                    case 3:
+                        imagesIds.add(R.drawable.week_5_friday_1);
+                        imagesIds.add(R.drawable.week_5_friday_2);
+                        imagesIds.add(R.drawable.week_5_friday_3);
+                        imagesIds.add(R.drawable.week_5_friday_4);
+                        imagesIds.add(R.drawable.week_5_friday_5);
+                        imagesIds.add(R.drawable.week_5_friday_6);
+                        imagesIds.add(R.drawable.week_5_friday_7);
+                        imagesIds.add(R.drawable.week_5_friday_8);
+                        break;
+                }
+                break;
+            case 10:
+            case 12:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        imagesIds.add(R.drawable.week_6_monday_1);
+                        imagesIds.add(R.drawable.week_6_monday_2);
+                        imagesIds.add(R.drawable.week_6_monday_3);
+                        imagesIds.add(R.drawable.week_6_monday_4);
+                        imagesIds.add(R.drawable.week_6_monday_5);
+                        imagesIds.add(R.drawable.week_6_monday_6);
+                        imagesIds.add(R.drawable.week_6_monday_7);
+                        imagesIds.add(R.drawable.week_6_monday_8);
+                        break;
+                    case 2:
+                        imagesIds.add(R.drawable.week_6_wednesday_1);
+                        imagesIds.add(R.drawable.week_6_wednesday_2);
+                        imagesIds.add(R.drawable.week_6_wednesday_3);
+                        imagesIds.add(R.drawable.week_6_wednesday_4);
+                        imagesIds.add(R.drawable.week_6_wednesday_5);
+                        imagesIds.add(R.drawable.week_6_wednesday_6);
+                        imagesIds.add(R.drawable.week_6_wednesday_7);
+                        imagesIds.add(R.drawable.week_6_wednesday_8);
+                        break;
+                    case 3:
+                        imagesIds.add(R.drawable.week_6_friday_1);
+                        imagesIds.add(R.drawable.week_6_friday_2);
+                        imagesIds.add(R.drawable.week_6_friday_3);
+                        imagesIds.add(R.drawable.week_6_friday_4);
+                        imagesIds.add(R.drawable.week_6_friday_5);
+                        imagesIds.add(R.drawable.week_6_friday_6);
+                        imagesIds.add(R.drawable.week_6_friday_7);
+                        imagesIds.add(R.drawable.week_6_friday_8);
+                        break;
+                }
+                break;
+            case 13:
+            case 15:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        imagesIds.add(R.drawable.week_9_monday_1);
+                        imagesIds.add(R.drawable.week_9_monday_2);
+                        imagesIds.add(R.drawable.week_9_monday_3);
+                        imagesIds.add(R.drawable.week_9_monday_4);
+                        imagesIds.add(R.drawable.week_9_monday_5);
+                        imagesIds.add(R.drawable.week_9_monday_6);
+                        imagesIds.add(R.drawable.week_9_monday_7);
+                        imagesIds.add(R.drawable.week_9_monday_8);
+                        break;
+                    case 2:
+                        imagesIds.add(R.drawable.week_9_wednesday_1);
+                        imagesIds.add(R.drawable.week_9_wednesday_2);
+                        imagesIds.add(R.drawable.week_9_wednesday_3);
+                        imagesIds.add(R.drawable.week_9_wednesday_4);
+                        imagesIds.add(R.drawable.week_9_wednesday_5);
+                        imagesIds.add(R.drawable.week_9_wednesday_6);
+                        imagesIds.add(R.drawable.week_9_wednesday_7);
+                        imagesIds.add(R.drawable.week_9_wednesday_8);
+                        break;
+                    case 3:
+                        imagesIds.add(R.drawable.week_9_friday_1);
+                        imagesIds.add(R.drawable.week_9_friday_2);
+                        imagesIds.add(R.drawable.week_9_friday_3);
+                        imagesIds.add(R.drawable.week_9_friday_4);
+                        imagesIds.add(R.drawable.week_9_friday_5);
+                        imagesIds.add(R.drawable.week_9_friday_6);
+                        imagesIds.add(R.drawable.week_9_friday_7);
+                        imagesIds.add(R.drawable.week_9_friday_8);
+                        break;
+                }
+                break;
+            case 14:
+            case 16:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        imagesIds.add(R.drawable.week_10_monday_1);
+                        imagesIds.add(R.drawable.week_10_monday_2);
+                        imagesIds.add(R.drawable.week_10_monday_3);
+                        imagesIds.add(R.drawable.week_10_monday_4);
+                        imagesIds.add(R.drawable.week_10_monday_5);
+                        imagesIds.add(R.drawable.week_10_monday_6);
+                        imagesIds.add(R.drawable.week_10_monday_7);
+                        imagesIds.add(R.drawable.week_10_monday_8);
+                        break;
+                    case 2:
+                        imagesIds.add(R.drawable.week_10_wednesday_1);
+                        imagesIds.add(R.drawable.week_10_wednesday_2);
+                        imagesIds.add(R.drawable.week_10_wednesday_3);
+                        imagesIds.add(R.drawable.week_10_wednesday_4);
+                        imagesIds.add(R.drawable.week_10_wednesday_5);
+                        imagesIds.add(R.drawable.week_10_wednesday_6);
+                        imagesIds.add(R.drawable.week_10_wednesday_7);
+                        imagesIds.add(R.drawable.week_10_wednesday_8);
+                        break;
+                    case 3:
+                        imagesIds.add(R.drawable.week_10_friday_1);
+                        imagesIds.add(R.drawable.week_10_friday_2);
+                        imagesIds.add(R.drawable.week_10_friday_3);
+                        imagesIds.add(R.drawable.week_10_friday_4);
+                        imagesIds.add(R.drawable.week_10_friday_5);
+                        imagesIds.add(R.drawable.week_10_friday_6);
+                        imagesIds.add(R.drawable.week_10_friday_7);
+                        imagesIds.add(R.drawable.week_10_friday_8);
+                        break;
+                }
+                break;
+        }
+        return imagesIds;
     }
 }

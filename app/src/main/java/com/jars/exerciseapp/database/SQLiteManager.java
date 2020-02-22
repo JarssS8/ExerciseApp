@@ -30,9 +30,11 @@ public class SQLiteManager extends SQLiteOpenHelper {
     }
 
     public void insertNewSave(int week,int day) {
-        if (day==3 && week<12) {
+        if (day==3 && week<16) {
             day=1;
             week++;
+        }else if(week<16){
+            day++;
         }
         ContentValues dataContentValues = toContentValues(week,day);
         if(findLastCircuit()==null) {
@@ -50,17 +52,19 @@ public class SQLiteManager extends SQLiteOpenHelper {
         return contentValues;
     }
 
-    public String findLastCircuit(){
+    public ContentValues findLastCircuit(){
         SQLiteDatabase db = this.getReadableDatabase();
-        String weekAndDay = null;
+        ContentValues contentValues= null;
         int week, day;
 
         Cursor cursor = db.query(TABLE_NAME_CIRCUIT, null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             day = cursor.getInt(cursor.getColumnIndex("day"));
             week = cursor.getInt(cursor.getColumnIndex("week"));
-            weekAndDay = week + day + "";
+            contentValues = new ContentValues();
+            contentValues.put("week",week);
+            contentValues.put("day",day);
         }
-        return weekAndDay;
+        return contentValues;
     }
 }

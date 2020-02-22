@@ -55,7 +55,7 @@
         android:layout_width="372dp"
         android:layout_height="210dp"
         android:clickable="true"
-        android:src="@drawable/week1_monday_1"
+        android:src="@drawable/pre_week_1_monday_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
