@@ -8,8 +8,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,12 +21,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.jars.exerciseapp.R;
-import com.jars.exerciseapp.activities.fragments.days.DayPreviousInfoFragment;
 import com.jars.exerciseapp.beans.Circuit;
 import com.jars.exerciseapp.database.SQLiteManager;
-import com.jars.exerciseapp.recyclers.RecyclerAdapterWeekly;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -128,8 +123,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.btSynchronize:
                 SQLiteManager manager = new SQLiteManager(getContext());
                 ContentValues lastRoutine = manager.findLastCircuit();
-                if (lastRoutine == null)
-                    Toast.makeText(getContext(), "You don't finish any session yet", Toast.LENGTH_SHORT).show();
+                if (lastRoutine == null) {
+                    spinnerWeeks.setSelection(1);
+                    spinnerDays.setSelection(1);
+                }
                 else{
                     spinnerWeeks.setSelection((Integer)lastRoutine.get("week"));
                     spinnerDays.setSelection((Integer)lastRoutine.get("day"));

@@ -8,27 +8,30 @@
 
     <Button
         android:id="@+id/btSynchronize"
-        android:layout_width="272dp"
-        android:layout_height="88dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:background="@color/pinkAccent"
         android:drawableLeft="@drawable/ic_sync_white_24dp"
         android:gravity="center"
-        android:text="Synchronize Routine"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Today Routine"
         android:textColor="#fff"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.858"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.236" />
 
     <Button
         android:id="@+id/btChargeRoutine"
         android:layout_width="259dp"
         android:layout_height="87dp"
         android:background="@color/colorPrimary"
-        android:text="Charge Routune"
+        android:text="Charge Routine"
         android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -36,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888" />
+        app:layout_constraintVertical_bias="0.891" />
 
     <Spinner
         android:id="@+id/spinnerWeeks"
@@ -47,7 +50,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.282" />
+        app:layout_constraintVertical_bias="0.408" />
 
     <Spinner
         android:id="@+id/spinnerDays"
@@ -58,6 +61,25 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494" />
+        app:layout_constraintVertical_bias="0.577" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="382dp"
+        android:layout_height="80dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="ROUTINE APP"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold|italic"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

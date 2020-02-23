@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.fragments.days.RoutineFragment">
+    tools:context=".activities.fragments.RoutineFragment">
 
 
     <TextView
         android:id="@+id/txtCountTime"
-        android:layout_width="94dp"
-        android:layout_height="43dp"
+        android:layout_width="160dp"
+        android:layout_height="45dp"
         android:gravity="center"
         android:text="START"
         android:textColor="@color/colorPrimary"
@@ -21,7 +21,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.854" />
+        app:layout_constraintVertical_bias="0.869" />
 
     <ImageView
         android:id="@+id/imageButtonStart"
@@ -38,22 +38,23 @@
 
     <TextView
         android:id="@+id/txtCircuitCount"
-        android:layout_width="104dp"
-        android:layout_height="23dp"
+        android:layout_width="153dp"
+        android:layout_height="42dp"
+        android:gravity="center"
         android:text="Circuito : 1/4"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.002" />
 
     <ImageView
         android:id="@+id/imageButtonExercise"
-        android:layout_width="372dp"
-        android:layout_height="210dp"
+        android:layout_width="384dp"
+        android:layout_height="251dp"
         android:clickable="true"
         android:src="@drawable/pre_week_1_monday_1"
         app:layout_constraintBottom_toBottomOf="parent"

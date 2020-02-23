@@ -1,4 +1,4 @@
-package com.jars.exerciseapp.activities.fragments.days;
+package com.jars.exerciseapp.activities.fragments;
 
 
 import android.os.Bundle;
@@ -14,8 +14,6 @@ import android.widget.TextView;
 
 import com.jars.exerciseapp.R;
 import com.jars.exerciseapp.beans.Circuit;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.

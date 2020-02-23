@@ -1,4 +1,4 @@
-package com.jars.exerciseapp.activities.fragments.days;
+package com.jars.exerciseapp.activities.fragments;
 
 
 import android.content.Context;

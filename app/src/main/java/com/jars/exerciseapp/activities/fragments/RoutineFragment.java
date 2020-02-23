@@ -1,4 +1,4 @@
-package com.jars.exerciseapp.activities.fragments.days;
+package com.jars.exerciseapp.activities.fragments;
 
 
 import android.content.Context;
@@ -75,7 +75,8 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
         int progressSeekBar = preferences.getInt("progress", 1);
         switch (progressSeekBar) {
             case 0:
-                timeBetweenCircuit = 30;
+                //Todo
+                timeBetweenCircuit = 5;
                 break;
             case 1:
                 timeBetweenCircuit = 60;
@@ -108,7 +109,8 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
     }
 
     private void startRoundCount() {
-        long totalTimeRound = 7* 60 * 1000 + 1000; //7 minutos 7 * 60 * 1000 + 1
+        //Todo
+        long totalTimeRound = 5 * 1000 + 1000; //7 minutos 7 * 60 * 1000 + 1
         countDownTimerCircuit = new CountDownTimer(totalTimeRound, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -121,7 +123,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
                 secondsShow = String.format("%02d", seconds);
 
                 txtRoundCount.setText(minutesShow + " : " + secondsShow);
-                if(sound) {
+                if (sound) {
                     if (seconds <= 5 && mins == 0 && seconds > 0) {
                         MediaPlayer.create(getContext(), R.raw.last5seconds).start();
                     } else if (seconds == 0 && mins == 0) {
@@ -146,7 +148,9 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
                     if (countDownTimerBreak != null)
                         countDownTimerBreak.cancel();
                     txtRoundCount.setText("FINISH");
-                    MediaPlayer.create(getContext(), R.raw.finishedday).start();
+                    imageButtonNextPhoto.setClickable(false);
+                    if (sound)
+                        MediaPlayer.create(getContext(), R.raw.finishedday).start();
                 }
             }
         }.start();
@@ -170,13 +174,15 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.imageButtonExercise:
-                if (circuit.getWeekId() == 1 && circuit.getDayId() == 2 || circuit.getWeekId() == 2 && circuit.getDayId() == 2) {
-                    if (actualPhoto == 2) {
-                        waitTime("NORMAL30");
-                    }
-                } else if (circuit.getWeekId() == 10 && circuit.getDayId() == 1 || circuit.getWeekId() == 12 && circuit.getDayId() == 1) {
-                    if (actualPhoto == 0) {
-                        waitTime("NORMAL60");
+                if(actualCircuit%2!=0) {
+                    if (circuit.getWeekId() == 1 && circuit.getDayId() == 2 || circuit.getWeekId() == 2 && circuit.getDayId() == 2) {
+                        if (actualPhoto == 2) {
+                            waitTime("NORMAL30");
+                        }
+                    } else if (circuit.getWeekId() == 10 && circuit.getDayId() == 1 || circuit.getWeekId() == 12 && circuit.getDayId() == 1) {
+                        if (actualPhoto == 0) {
+                            waitTime("NORMAL60");
+                        }
                     }
                 }
                 actualPhoto++;
@@ -190,6 +196,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
     }
 
     private void waitTime(String breakType) {
+        //Todo
         switch (breakType) {
             case "CIRCUIT":
                 txtCountDownWaitNormal.setVisibility(View.INVISIBLE);
@@ -232,7 +239,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
             case "NORMAL30":
                 imageButtonNextPhoto.setClickable(false);
                 txtCountDownWaitNormal.setVisibility(View.VISIBLE);
-                totalTimeRound = 35 * 1000 + 1000; //35 segundos
+                totalTimeRound = 5 * 1000 + 1000; //35 segundos
                 countDownTimerBreak = new CountDownTimer(totalTimeRound, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -258,13 +265,18 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
                     public void onFinish() {
                         txtCountDownWaitNormal.setVisibility(View.INVISIBLE);
                         imageButtonNextPhoto.setClickable(true);
+                        actualPhoto++;
+                        if (actualPhoto == auxPhotos.size()) {
+                            actualPhoto = 0;
+                        }
+                        imageButtonNextPhoto.setImageResource(auxPhotos.get(actualPhoto));
                     }
                 }.start();
                 break;
             case "NORMAL60":
                 imageButtonNextPhoto.setClickable(false);
                 txtCountDownWaitNormal.setVisibility(View.VISIBLE);
-                totalTimeRound = 65 * 1000 + 1000; //60 segundos
+                totalTimeRound = 5 * 1000 + 1000; //60 segundos
                 countDownTimerBreak = new CountDownTimer(totalTimeRound, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -290,6 +302,11 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
                     public void onFinish() {
                         txtCountDownWaitNormal.setVisibility(View.INVISIBLE);
                         imageButtonNextPhoto.setClickable(true);
+                        actualPhoto++;
+                        if (actualPhoto == auxPhotos.size()) {
+                            actualPhoto = 0;
+                        }
+                        imageButtonNextPhoto.setImageResource(auxPhotos.get(actualPhoto));
                     }
                 }.start();
                 break;
@@ -305,5 +322,16 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
         RoutineFragment.circuit = circuit;
     }
 
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (txtCountDownWait.getVisibility() == View.VISIBLE) {
+            countDownTimerBreak.cancel();
+        } else if (txtCountDownWaitNormal.getVisibility() == View.VISIBLE) {
+            countDownTimerBreak.cancel();
+            countDownTimerCircuit.cancel();
+        } else if (!txtRoundCount.toString().equalsIgnoreCase("START") && !txtRoundCount.toString().equalsIgnoreCase("FINISH")) {
+            countDownTimerCircuit.cancel();
+        }
+    }
 }
