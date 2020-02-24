@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">ExerciseApp</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="week_promp">Choose a Week</string>
 
     <string-array name="weeks_arrays">

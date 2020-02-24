@@ -3,6 +3,9 @@ package com.jars.exerciseapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -13,7 +16,7 @@ import android.widget.TextView;
 import com.jars.exerciseapp.R;
 import com.jars.exerciseapp.recyclers.SliderAdapter;
 
-public class IntroActivity extends AppCompatActivity {
+public class IntroActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ViewPager sliderViewPager;
     private LinearLayout linearLayout;
@@ -27,6 +30,14 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
+        if(getPreferences()){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            this.finish();
+        }
+
+        getSupportActionBar().hide();
+
         sliderViewPager = findViewById(R.id.sliderPager);
         linearLayout = findViewById(R.id.dotsLayout);
         backButton = findViewById(R.id.btBackSlider);
@@ -35,6 +46,8 @@ public class IntroActivity extends AppCompatActivity {
         backButton.setEnabled(false);
         backButton.setVisibility(View.INVISIBLE);
         nextButton.setText("NEXT");
+        backButton.setOnClickListener(this);
+        nextButton.setOnClickListener(this);
 
         sliderAdapter = new SliderAdapter(this);
         sliderViewPager.setAdapter(sliderAdapter);
@@ -97,4 +110,38 @@ public class IntroActivity extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btNextSlider:
+                if (currentPosition >= 0 && currentPosition <=1) {
+                    sliderViewPager.setCurrentItem(currentPosition+1);
+                } else {
+                    setPreferences();
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                    this.finish();
+                }
+
+                break;
+            case R.id.btBackSlider:
+                if (currentPosition >= 1 && currentPosition <=2) {
+                    sliderViewPager.setCurrentItem(currentPosition-1);
+                }
+                break;
+        }
+    }
+
+    private void setPreferences() {
+        SharedPreferences preferences = getSharedPreferences("settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("tutorial",true);
+        editor.apply();
+    }
+
+    private boolean getPreferences() {
+        SharedPreferences preferences = getSharedPreferences("settings", Context.MODE_PRIVATE);
+        return preferences.getBoolean("tutorial",false);
+    }
 }
