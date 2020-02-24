@@ -12,10 +12,14 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_nav_day"
-            app:destination="@id/nav_day" />
+            app:destination="@id/nav_day"
+            app:enterAnim="@anim/fragment_slide_left_enter"
+            app:exitAnim="@anim/fragment_slide_left_exit" />
         <action
             android:id="@+id/action_nav_home_to_nav_options"
-            app:destination="@id/nav_options" />
+            app:destination="@id/nav_options"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
     <fragment
@@ -25,7 +29,9 @@
         tools:layout="@layout/fragment_day_previous_info">
         <action
             android:id="@+id/action_nav_day_to_nav_routine"
-            app:destination="@id/nav_routine" />
+            app:destination="@id/nav_routine"
+            app:enterAnim="@anim/fragment_slide_left_enter"
+            app:exitAnim="@anim/fragment_slide_left_exit" />
     </fragment>
 
     <fragment
@@ -35,7 +41,9 @@
         tools:layout="@layout/fragment_routine">
         <action
             android:id="@+id/action_nav_routine_to_nav_home"
-            app:destination="@id/nav_home" />
+            app:destination="@id/nav_home"
+            app:enterAnim="@anim/fragment_slide_left_enter"
+            app:exitAnim="@anim/fragment_slide_left_exit" />
     </fragment>
 
     <fragment
@@ -45,7 +53,9 @@
         tools:layout="@layout/fragment_options">
         <action
             android:id="@+id/action_nav_options_to_nav_home"
-            app:destination="@id/nav_home" />
+            app:destination="@id/nav_home"
+            app:enterAnim="@anim/fragment_slide_left_enter"
+            app:exitAnim="@anim/fragment_slide_left_exit" />
     </fragment>
 
 
