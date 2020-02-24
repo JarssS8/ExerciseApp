@@ -68,16 +68,16 @@ public class OptionsFragment extends Fragment implements SeekBar.OnSeekBarChange
         int position = seekBar.getProgress();
         switch (position){
             case 0:
-                txtSecondsSeekBar.setText("30 seconds");
+                txtSecondsSeekBar.setText("30 segundos");
                 break;
             case 1:
-                txtSecondsSeekBar.setText("60 seconds");
+                txtSecondsSeekBar.setText("60 segundos");
                 break;
             case 2:
-                txtSecondsSeekBar.setText("90 seconds");
+                txtSecondsSeekBar.setText("90 segundos");
                 break;
             case 3:
-                txtSecondsSeekBar.setText("120 seconds");
+                txtSecondsSeekBar.setText("120 segundos");
                 break;
         }
     }

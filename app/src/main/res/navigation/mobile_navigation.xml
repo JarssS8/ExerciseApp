@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/nav_day"
         android:name="com.jars.exerciseapp.activities.fragments.DayPreviousInfoFragment"
-        android:label="TODAY ROUTINE"
+        android:label="INFORMACION PREVIA"
         tools:layout="@layout/fragment_day_previous_info">
         <action
             android:id="@+id/action_nav_day_to_nav_routine"
@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/nav_routine"
         android:name="com.jars.exerciseapp.activities.fragments.RoutineFragment"
-        android:label="TODAY ROUTINE"
+        android:label="RUTINA DE HOY"
         tools:layout="@layout/fragment_routine">
         <action
             android:id="@+id/action_nav_routine_to_nav_home"
@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/nav_options"
         android:name="com.jars.exerciseapp.activities.fragments.OptionsFragment"
-        android:label="OPTIONS"
+        android:label="OPCIONES"
         tools:layout="@layout/fragment_options">
         <action
             android:id="@+id/action_nav_options_to_nav_home"

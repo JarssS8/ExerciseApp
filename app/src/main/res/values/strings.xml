@@ -1,32 +1,32 @@
 <resources>
     <string name="app_name">ExerciseApp</string>
 
-    <string name="week_promp">Choose a Week</string>
+    <string name="week_promp">Elige una semana</string>
 
     <string-array name="weeks_arrays">
-        <item>Select One Week...</item>
-        <item>PreTraining Week 1</item>
-        <item>PreTraining Week 2</item>
-        <item>PreTraining Week 3</item>
-        <item>PreTraining Week 4</item>
-        <item>Week 1</item>
-        <item>Week 2</item>
-        <item>Week 3</item>
-        <item>Week 4</item>
-        <item>Week 5</item>
-        <item>Week 6</item>
-        <item>Week 7</item>
-        <item>Week 8</item>
-        <item>Week 9</item>
-        <item>Week 10</item>
-        <item>Week 11</item>
-        <item>Week 12</item>
+        <item>Seleciona una semana...</item>
+        <item>PreTraining Semana 1</item>
+        <item>PreTraining Semana 2</item>
+        <item>PreTraining Semana 3</item>
+        <item>PreTraining Semana 4</item>
+        <item>Semana 1</item>
+        <item>Semana 2</item>
+        <item>Semana 3</item>
+        <item>Semana 4</item>
+        <item>Semana 5</item>
+        <item>Semana 6</item>
+        <item>Semana 7</item>
+        <item>Semana 8</item>
+        <item>Semana 9</item>
+        <item>Semana 10</item>
+        <item>Semana 11</item>
+        <item>Semana 12</item>
     </string-array>
 
     <string-array name="days_array">
-        <item>Select One Day...</item>
-        <item>Monday</item>
-        <item>Wednesday</item>
-        <item>Friday</item>
+        <item>Selecciona un dia...</item>
+        <item>Lunes</item>
+        <item>Miercoles</item>
+        <item>Viernes</item>
     </string-array>
 </resources>

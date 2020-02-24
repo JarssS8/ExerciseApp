@@ -75,8 +75,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
         int progressSeekBar = preferences.getInt("progress", 1);
         switch (progressSeekBar) {
             case 0:
-                //Todo
-                timeBetweenCircuit = 5;
+                timeBetweenCircuit = 30;
                 break;
             case 1:
                 timeBetweenCircuit = 60;
@@ -109,8 +108,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
     }
 
     private void startRoundCount() {
-        //Todo
-        long totalTimeRound = 5 * 1000 + 1000; //7 minutos 7 * 60 * 1000 + 1
+        long totalTimeRound = 7 * 60 * 1000 + 1000; //7 minutos 7 * 60 * 1000 + 1
         countDownTimerCircuit = new CountDownTimer(totalTimeRound, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -149,6 +147,9 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
                         countDownTimerBreak.cancel();
                     txtRoundCount.setText("FINISH");
                     imageButtonNextPhoto.setClickable(false);
+                    SQLiteManager manager = new SQLiteManager(getContext());
+                    manager.insertNewSave(circuit.getWeekId(), circuit.getDayId());
+                    manager.close();
                     if (sound)
                         MediaPlayer.create(getContext(), R.raw.finishedday).start();
                 }
@@ -196,7 +197,6 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
     }
 
     private void waitTime(String breakType) {
-        //Todo
         switch (breakType) {
             case "CIRCUIT":
                 txtCountDownWaitNormal.setVisibility(View.INVISIBLE);
@@ -239,7 +239,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
             case "NORMAL30":
                 imageButtonNextPhoto.setClickable(false);
                 txtCountDownWaitNormal.setVisibility(View.VISIBLE);
-                totalTimeRound = 5 * 1000 + 1000; //35 segundos
+                totalTimeRound = 35 * 1000 + 1000; //35 segundos
                 countDownTimerBreak = new CountDownTimer(totalTimeRound, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -276,7 +276,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
             case "NORMAL60":
                 imageButtonNextPhoto.setClickable(false);
                 txtCountDownWaitNormal.setVisibility(View.VISIBLE);
-                totalTimeRound = 5 * 1000 + 1000; //60 segundos
+                totalTimeRound = 65 * 1000 + 1000; //60 segundos
                 countDownTimerBreak = new CountDownTimer(totalTimeRound, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {

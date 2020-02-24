@@ -13,7 +13,7 @@
         android:layout_height="59dp"
         android:background="@color/pinkAccent"
         android:gravity="center"
-        android:text="SAVE"
+        android:text="guardar"
         android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -25,23 +25,23 @@
 
     <TextView
         android:id="@+id/txtSecondsSeekBar"
-        android:layout_width="85dp"
+        android:layout_width="121dp"
         android:layout_height="28dp"
-        android:text="30 seconds"
+        android:text="30 segundos"
         android:textColor="@color/pinkAccent"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.803"
+        app:layout_constraintHorizontal_bias="0.886"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.1" />
 
     <TextView
         android:id="@+id/txtAppSoundsOptions"
         android:layout_width="283dp"
         android:layout_height="22dp"
-        android:text="App sounds :"
+        android:text="Sonido de la aplicación"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,7 +55,7 @@
         android:id="@+id/txtSecondsOptions"
         android:layout_width="283dp"
         android:layout_height="22dp"
-        android:text="Break time in seconds between circuits :"
+        android:text="Descanso entre circuitos:"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
