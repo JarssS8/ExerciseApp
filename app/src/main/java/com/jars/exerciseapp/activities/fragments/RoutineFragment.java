@@ -330,7 +330,7 @@ public class RoutineFragment extends Fragment implements View.OnClickListener {
         } else if (txtCountDownWaitNormal.getVisibility() == View.VISIBLE) {
             countDownTimerBreak.cancel();
             countDownTimerCircuit.cancel();
-        } else if (!txtRoundCount.toString().equalsIgnoreCase("START") && !txtRoundCount.toString().equalsIgnoreCase("FINISH")) {
+        } else if (!txtRoundCount.getText().toString().equalsIgnoreCase("START") && !txtRoundCount.getText().toString().equalsIgnoreCase("FINISH")) {
             countDownTimerCircuit.cancel();
         }
     }

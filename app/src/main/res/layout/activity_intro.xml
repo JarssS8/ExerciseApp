@@ -9,25 +9,33 @@
 
     <Button
         android:id="@+id/btBackSlider"
-        android:layout_width="133dp"
-        android:layout_height="72dp"
+        android:layout_width="126dp"
+        android:layout_height="73dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="2dp"
         android:background="#00FFFFFF"
-        android:text="Button" />
+        android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="BACK"
+        android:textColor="@color/colorPrimary" />
 
     <Button
         android:id="@+id/btNextSlider"
-        android:layout_width="119dp"
+        android:layout_width="129dp"
         android:layout_height="73dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="-1dp"
         android:layout_marginBottom="0dp"
         android:background="#00FFFFFF"
-        android:text="Button" />
+        android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="NEXT"
+        android:textColor="@color/colorPrimary" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/sliderPager"
@@ -46,12 +54,14 @@
 
     <LinearLayout
         android:id="@+id/dotsLayout"
-        android:layout_width="145dp"
-        android:layout_height="79dp"
+        android:layout_width="156dp"
+        android:layout_height="76dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="128dp"
         android:layout_marginEnd="128dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="2dp"
         android:gravity="center"
         android:orientation="horizontal"></LinearLayout>
 

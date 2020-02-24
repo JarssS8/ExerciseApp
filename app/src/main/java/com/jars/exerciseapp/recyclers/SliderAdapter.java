@@ -28,9 +28,9 @@ public class SliderAdapter extends PagerAdapter {
 
     private void setPages() {
         tutorials= new Tutorial[3];
-        tutorials[0]= new Tutorial(R.drawable.pre_week_1_friday_1, "Tutorial 1", "Hola esto es el tutorial 1");
-        tutorials[1]= new Tutorial(R.drawable.pre_week_1_friday_2, "Tutorial 2", "Hola esto es el tutorial 2");
-        tutorials[2]= new Tutorial(R.drawable.pre_week_1_friday_3, "Tutorial 3", "Hola esto es el tutorial 3");
+        tutorials[0]= new Tutorial(R.drawable.pre_week_1_friday_1, "Información Basica", "Antes de cada ejercicio podrás ver el material que es necesario para cada sesión.\nCuando termines una sesión se guardara el progreso para que la proxima vez solo tengas que darle al boton de la rutina de hoy.");
+        tutorials[1]= new Tutorial(R.drawable.pre_week_1_friday_2, "Funcionamiento de la sesión", "Cuando empiece la sesión, cada vez que realices un ejercicio tendras que tocar la imagen para avanzar a la siguiente.\nHay ejercicios que requieren de un tiempo en una posicion, tendras 5 segundos para colocarte en la posición antes de empezar.");
+        tutorials[2]= new Tutorial(R.drawable.pre_week_1_friday_3, "Ajustes", "En las opciones del menu principal podras cambiar los tiempos de la mayoria de \"descansos\" y tiempos de espera, ademas de poder desactivar las alarmas sonoras.");
     }
 
 

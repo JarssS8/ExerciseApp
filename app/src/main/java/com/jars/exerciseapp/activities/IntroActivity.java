@@ -36,7 +36,6 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
             this.finish();
         }
 
-        getSupportActionBar().hide();
 
         sliderViewPager = findViewById(R.id.sliderPager);
         linearLayout = findViewById(R.id.dotsLayout);
@@ -62,12 +61,12 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
             dotsIndicartor[i] = new TextView(this);
             dotsIndicartor[i].setText(Html.fromHtml("&#8226;"));
             dotsIndicartor[i].setTextSize(35);
-            dotsIndicartor[i].setTextColor(getResources().getColor(R.color.colorTransparentWhite));
+            dotsIndicartor[i].setTextColor(getResources().getColor(R.color.colorPrimary));
 
             linearLayout.addView(dotsIndicartor[i]);
         }
         if (dotsIndicartor.length > 0) {
-            dotsIndicartor[position].setTextColor(getResources().getColor(R.color.white));
+            dotsIndicartor[position].setTextColor(getResources().getColor(R.color.colorPrimaryDark));
         }
 
 

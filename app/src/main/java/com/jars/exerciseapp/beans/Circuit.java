@@ -6,6 +6,8 @@ public class Circuit {
     private String name;
     private Integer weekId;
     private Integer dayId;
+    private ArrayList<String> requiredMaterial;
+    private ArrayList<String> optionalMaterial;
     private ArrayList<Integer> imagesInt;
 
     public String getName() {
@@ -30,6 +32,22 @@ public class Circuit {
 
     public void setDayId(Integer dayId) {
         this.dayId = dayId;
+    }
+
+    public ArrayList<String> getRequiredMaterial() {
+        return requiredMaterial;
+    }
+
+    public void setRequiredMaterial(ArrayList<String> requiredMaterial) {
+        this.requiredMaterial = requiredMaterial;
+    }
+
+    public ArrayList<String> getOptionalMaterial() {
+        return optionalMaterial;
+    }
+
+    public void setOptionalMaterial(ArrayList<String> optionalMaterial) {
+        this.optionalMaterial = optionalMaterial;
     }
 
     public ArrayList<Integer> getImagesInt() {

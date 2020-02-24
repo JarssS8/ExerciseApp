@@ -151,8 +151,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         circuit.setWeekId(spinnerWeeks.getSelectedItemPosition());
         circuit.setDayId(spinnerDays.getSelectedItemPosition());
         circuit.setImagesInt(addImages());
+        circuit.setRequiredMaterial(addRequiredMaterial());
+        circuit.setOptionalMaterial(addOptionalMaterial());
         return circuit;
     }
+
+
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -173,6 +177,284 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private ArrayList<String> addRequiredMaterial() {
+        ArrayList<String> required = new ArrayList<>();
+        switch (spinnerWeeks.getSelectedItemPosition()) {
+            case 1:
+            case 2:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        required.add("Comba");
+                        required.add("Banco o cajón para subirse encima");
+                        break;
+                    case 2:
+                        required.add("Banco para hacer triceps");
+                        break;
+                    case 3:
+                        required.add("Banco para hacer triceps");
+                        required.add("Banco o cajón para subirse encima");
+                        break;
+                }
+                break;
+            case 3:
+            case 4:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        required.add("Banco o cajón para subirse encima");
+                        required.add("Comba");
+                        break;
+                    case 2:
+                        required.add("Banco para hacer triceps");
+                        break;
+                    case 3:
+                        required.add("Comba");
+                        break;
+                }
+                break;
+            case 5:
+            case 7:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        required.add("Banco o cajón para subirse encima");
+                        break;
+                    case 2:
+                        required.add("Banco para hacer triceps");
+                        break;
+                    case 3:
+                        required.add("Banco o cajón para subirse encima");
+                        break;
+                }
+                break;
+            case 6:
+            case 8:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        required.add("Comba");
+                        required.add("Banco o cajón para subirse encima");
+                        required.add("Step o cajón bajo");
+                        break;
+                    case 2:
+                        required.add("Banco para hacer triceps");
+                        break;
+                    case 3:
+                        required.add("Comba");
+                        break;
+                }
+                break;
+            case 9:
+            case 11:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        required.add("Comba");
+                        required.add("Banco o cajón para subirse encima");
+                        break;
+                    case 2:
+                        required.add("Banco para hacer triceps");
+                        break;
+                    case 3:
+                        required.add("Comba");
+                        required.add("Banco para hacer triceps");
+                        break;
+                }
+                break;
+            case 10:
+            case 12:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        required.add("Banco para hacer triceps");
+                        break;
+                    case 2:
+                        required.add("Comba");
+                        required.add("Banco para hacer triceps");
+                        break;
+                    case 3:
+                        required.add("Banco o cajón para subirse encima");
+                        required.add("Step o cajón bajo");
+                        break;
+                }
+                break;
+            case 13:
+            case 15:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        required.add("Banco o cajón para subirse encima");
+                        required.add("Step o cajón bajo");
+                        break;
+                    case 2:
+                        required.add("Banco para hacer triceps");
+                        required.add("Bosu");
+                        break;
+                    case 3:
+                        required.add("Banco para hacer abdominales y saltarlo por encima");
+                        break;
+                }
+                break;
+            case 14:
+            case 16:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        required.add("Banco o cajón para subirse encima");
+                        required.add("Step o cajón bajo");
+                        break;
+                    case 2:
+                        required.add("Banco para hacer triceps");
+                        required.add("Bosu");
+                        break;
+                    case 3:
+                        required.add("Banco para hacer abdominales y saltarlo por encima");
+                        required.add("Banco o cajón para subirse encima");
+                        break;
+                }
+                break;
+        }
+        return required;
+    }
+
+    private ArrayList<String> addOptionalMaterial() {
+        ArrayList<String> optional = new ArrayList<>();
+        switch (spinnerWeeks.getSelectedItemPosition()) {
+            case 1:
+            case 2:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        optional.add("Esterilla");
+                        break;
+                    case 2:
+                        optional.add("Esterilla");
+                        break;
+                    case 3:
+                        optional.add("Esterilla");
+                        break;
+                }
+                break;
+            case 3:
+            case 4:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        optional.add("Esterilla");
+                        optional.add("Balon medicinal (6-12 Kg)");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                    case 2:
+                        optional.add("Esterilla");
+                        break;
+                    case 3:
+                        optional.add("Esterilla");
+                        optional.add("Balon medicinal (6-12 Kg)");
+                        break;
+                }
+                break;
+            case 5:
+            case 7:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        optional.add("Esterilla");
+                        optional.add("Balon medicinal (6-12 Kg)");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                    case 2:
+                        optional.add("Esterilla");
+                        optional.add("Balon medicinal (6-12 Kg)");
+                        break;
+                    case 3:
+                        optional.add("Esterilla");
+                        optional.add("Balon medicinal (6-12 Kg)");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                }
+                break;
+            case 6:
+            case 8:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        optional.add("Esterilla");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                    case 2:
+                        optional.add("Esterilla");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                    case 3:
+                        optional.add("Esterilla");
+                        break;
+                }
+                break;
+            case 9:
+            case 11:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        optional.add("Esterilla");
+                        optional.add("Balon medicinal (6-12 Kg)");
+                        optional.add("Pesa (3-6 Kg)");
+                        optional.add("Pesa (10-15 Kg)");
+                        break;
+                    case 2:
+                        optional.add("Esterilla");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                    case 3:
+                        optional.add("Esterilla");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                }
+                break;
+            case 10:
+            case 12:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        optional.add("Esterilla");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                    case 2:
+                        optional.add("Esterilla");
+                        break;
+                    case 3:
+                        optional.add("Esterilla");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                }
+                break;
+            case 13:
+            case 15:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        optional.add("Esterilla");
+                        optional.add("Balon medicinal (6-12 Kg)");
+                        break;
+                    case 2:
+                        optional.add("Esterilla");
+                        optional.add("Balon medicinal (6-12 Kg)");
+                        optional.add("Pesa (3-6 Kg)");
+
+                        break;
+                    case 3:
+                        optional.add("Esterilla");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                }
+                break;
+            case 14:
+            case 16:
+                switch (spinnerDays.getSelectedItemPosition()) {
+                    case 1:
+                        optional.add("Esterilla");
+                        optional.add("Balon medicinal (6-12 Kg)");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                    case 2:
+                        optional.add("Esterilla");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                    case 3:
+                        optional.add("Esterilla");
+                        optional.add("Pesa (3-6 Kg)");
+                        break;
+                }
+                break;
+        }
+        return optional;
     }
 
     private ArrayList<Integer> addImages() {
