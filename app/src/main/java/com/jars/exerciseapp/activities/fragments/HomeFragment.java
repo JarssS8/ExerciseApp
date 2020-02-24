@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void chargeWeeksAndDays() {
         //WEEKS
         List<String> weeks = Arrays.asList(getResources().getStringArray(R.array.weeks_arrays));
-        ArrayAdapter<String> weeksAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, weeks) {
+        ArrayAdapter<String> weeksAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_adapter_text, weeks) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         //DAYS
         List<String> days = Arrays.asList(getResources().getStringArray(R.array.days_array));
-        ArrayAdapter<String> daysAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, days) {
+        ArrayAdapter<String> daysAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_adapter_text, days) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {

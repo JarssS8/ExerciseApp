@@ -36,10 +36,11 @@
 
     <TextView
         android:id="@+id/txtDayName"
-        android:layout_width="351dp"
-        android:layout_height="77dp"
+        android:layout_width="356dp"
+        android:layout_height="102dp"
         android:gravity="center"
         android:text="TextView"
+        android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,6 +55,9 @@
         android:layout_width="349dp"
         android:layout_height="258dp"
         android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

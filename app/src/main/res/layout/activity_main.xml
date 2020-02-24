@@ -9,7 +9,7 @@
     android:fitsSystemWindows="true"
     tools:context=".activities.MainActivity"
     tools:openDrawer="start"
-    android:background="@color/backgroud">
+    android:background="@drawable/background">
 
     <include
     layout="@layout/app_bar_main"
